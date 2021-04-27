@@ -119,19 +119,18 @@ include "dbconfig.php";
                 $total_price += ($product["product_price"] * $product["product_quantity"]);
                 ?>
                 <div class="grid-item">
-                    <form method='post' action=''>
-                        <input type='hidden' name='product_id' value="<?php echo $product["product_id"]; ?>" />
-                        <input type='hidden' name='action' value="remove" />
-                        <button type='submit' class='remove'>Remove Item</button>
+                    <form method="post" action="">
+                        <input type="hidden" name="product_id" value="<?php echo $product["product_id"]; ?>" />
+                        <input type="hidden" name="action" value="remove" />
+                        <button type="submit" class="remove">Remove Item</button>
                     </form>
                 </div>
         </div>
-        </div>
-        <?php "}" ?>
+        }
         <p class="total-text">TOTAL: <?php echo "£" . $total_price; ?></p>
 
 
-    <?php
+<?php
                 try {
                     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password); //building a new connection object
                     // set the PDO error mode to exception
@@ -157,14 +156,9 @@ include "dbconfig.php";
                     echo $sql . "<br>" . $e->getMessage(); //If we are not successful we will see an error
                 }
             }
-    ?>
-
-
-
-<?php
-    } else {
-        echo "<h3>No order to process!</h3>";
-    }
+        } else {
+            echo "<h3>No order to process!</h3>";
+        }
 ?>
 </div>
 
