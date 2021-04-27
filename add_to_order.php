@@ -113,7 +113,7 @@ include "dbconfig.php";
                 </div>
                 <div class="grid-item"><?php echo "£" . number_format($product["product_price"], 2); ?></div>
                 <div class="grid-item"><?php $product_total = $product["product_price"] * $product["product_quantity"];
-                                        echo "£ " . number_format($product_total, 2) ?></div>
+                                        echo "£" . number_format($product_total, 2) ?></div>
 
                 <div class="grid-item">
                     <form method="post" action="">
@@ -127,10 +127,10 @@ include "dbconfig.php";
                 ?>
                 }
                 <p class="total-text">TOTAL: <?php echo "£" . $total_price; ?></p>
-        </div>
 
 
-<?php
+
+        <?php
                 try {
                     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password); //building a new connection object
                     // set the PDO error mode to exception
@@ -159,14 +159,14 @@ include "dbconfig.php";
         } else {
             echo "<h3>No order to process!</h3>";
         }
-?>
-</div>
+        ?>
 
-<div style="clear:both;"></div>
-<p>Thankyou for ordering with us, we hope to see you again soon</p>
-<div class="message_box" style="margin:10px 0px;">
 
-</div>
+        <div style="clear:both;"></div>
+        <p>Thankyou for ordering with us, we hope to see you again soon</p>
+        <div class="message_box" style="margin:10px 0px;">
+
+        </div>
 
 
 </body>
