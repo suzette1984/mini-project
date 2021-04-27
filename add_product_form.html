@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add a product</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+<body>
+    <form action="add_product.php" method="post" enctype="multipart/form-data">
+        <p>Name</p>
+        <input type="text" name="product_name">
+        <p>Price</p>
+        <input type="text" name="product_price">
+        <p>Description</p>
+        <textarea name="product_description"></textarea>
+        <br>
+        Select Main Image File to Upload:
+        <input type="file" name="main_image"  >
+        Select Image Files to Upload:
+        <input type="file" name="files[]" multiple >
+        <input type="submit" name="submit" value="Add Product">
+    </form>
+
+    <form action="./processOrder.php" method="post">
+        <input type="number" name="OrderID" value="<?php echo $row["ID"] ?>" readonly hidden>
+        <input type="text" name="Intent" value="cancel" readonly hidden>
+        <button class="btn btn-error" type="submit">Cancel Order</button>
+    </form>
+</body>
+</html>
+
