@@ -115,9 +115,6 @@ include "dbconfig.php";
                 <div class="grid-item"><?php $product_total = $product["product_price"] * $product["product_quantity"];
                                         echo "£ " . number_format($product_total, 2) ?></div>
 
-                <?php
-                $total_price += ($product["product_price"] * $product["product_quantity"]);
-                ?>
                 <div class="grid-item">
                     <form method="post" action="">
                         <input type="hidden" name="product_id" value="<?php echo $product["product_id"]; ?>" />
@@ -125,9 +122,12 @@ include "dbconfig.php";
                         <button type="submit" class="remove">Remove Item</button>
                     </form>
                 </div>
+                <?php
+                $total_price += ($product["product_price"] * $product["product_quantity"]);
+                ?>
+                }
+                <p class="total-text">TOTAL: <?php echo "£" . $total_price; ?></p>
         </div>
-        }
-        <p class="total-text">TOTAL: <?php echo "£" . $total_price; ?></p>
 
 
 <?php
