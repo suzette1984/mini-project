@@ -113,7 +113,7 @@ include "dbconfig.php";
                 </div>
                 <div class="grid-item"><?php echo "£" . number_format($product["product_price"], 2); ?></div>
                 <div class="grid-item"><?php $product_total = $product["product_price"] * $product["product_quantity"];
-                                        echo "£" . number_format($product_total, 2) ?></div>
+                                        echo "£ " . number_format($product_total, 2) ?></div>
 
                 <div class="grid-item">
                     <form method="post" action="">
@@ -122,51 +122,56 @@ include "dbconfig.php";
                         <button type="submit" class="remove">Remove Item</button>
                     </form>
                 </div>
-                <?php
-                $total_price += ($product["product_price"] * $product["product_quantity"]);
-                ?>
-                }
-                <p class="total-text">TOTAL: <?php echo "£" . $total_price; ?></p>
 
+            <?php
+                $total_price += ($product["product_price"] * $product["product_quantity"]);
+            }
+            ?>
+        </div>
+        <p class="total-text">TOTAL: <?php echo "£" . $total_price; ?></p>
 
 
         <?php
-                try {
-                    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password); //building a new connection object
-                    // set the PDO error mode to exception
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $user_id = '1'; // for debug purposes - should be replaced with SESSION var
-                    //we insert the main order details and save the last id
-                    $sql = "INSERT INTO orders (order_total, order_date, user_id) VALUES ('$total_price', now(), '$user_id')"; // building a string with the SQL INSERT you want to run
-                    //echo $sql;
-                    //exit();
-                    // use exec() because no results are returned
-                    $conn->exec($sql);
-                    $last_id = $conn->lastInsertId();
-                    //loop round and insert all of the product items from the basket
-                    foreach ($_SESSION["shopping_cart"] as $product) {
-                        $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password); //building a new connection object
-                        // set the PDO error mode to exception
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password); //building a new connection object
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $user_id = '1'; // for debug purposes - should be replaced with SESSION var
+            //we insert the main order details and save the last id
+            $sql = "INSERT INTO orders (order_total, order_date, user_id) VALUES ('$total_price', now(), '$user_id')"; // building a string with the SQL INSERT you want to run
+            //echo $sql;
+            //exit();
+            // use exec() because no results are returned
+            $conn->exec($sql);
+            $last_id = $conn->lastInsertId();
+            //loop round and insert all of the product items from the basket
+            foreach ($_SESSION["shopping_cart"] as $product) {
+                $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password); //building a new connection object
+                // set the PDO error mode to exception
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        $sql = 'INSERT INTO order_items (product_id, quantity, order_id) VALUES (' . $product['product_id'] . ', ' . $product['product_quantity'] . ', ' . $last_id . ')'; // building a string with the SQL INSERT you want to run
-                        $conn->exec($sql);
-                    }
-                } catch (PDOException $e) {
-                    echo $sql . "<br>" . $e->getMessage(); //If we are not successful we will see an error
-                }
+                $sql = 'INSERT INTO order_items (product_id, quantity, order_id) VALUES (' . $product['product_id'] . ', ' . $product['product_quantity'] . ', ' . $last_id . ')'; // building a string with the SQL INSERT you want to run
+                $conn->exec($sql);
             }
-        } else {
-            echo "<h3>No order to process!</h3>";
+        } catch (PDOException $e) {
+            echo $sql . "<br>" . $e->getMessage(); //If we are not successful we will see an error
         }
         ?>
 
 
-        <div style="clear:both;"></div>
-        <p>Thankyou for ordering with us, we hope to see you again soon</p>
-        <div class="message_box" style="margin:10px 0px;">
 
-        </div>
+    <?php
+    } else {
+        echo "<h3>No order to process!</h3>";
+    }
+    ?>
+    </div>
+
+    <div style="clear:both;"></div>
+    <p>Thankyou for ordering with us, we hope to see you again soon</p>
+    <div class="message_box" style="margin:10px 0px;">
+
+    </div>
 
 
 </body>
