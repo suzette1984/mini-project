@@ -41,7 +41,7 @@ try {
 
             //set session login variable to true here
             $_SESSION["loggedIn"] = 'true';
-            $_SESSION["FName"] = $row['user_firstName'];
+            $_SESSION["FName"] = $row['user_firstname'];
             $_SESSION["LName"] = $row['user_lastname'];
             $_SESSION["UserID"] = $row['user_id'];
             $_SESSION["Role"] = $row['user_type'];

@@ -165,10 +165,13 @@ include "dbConfig.php";
         echo "<h3>No order to process!</h3>";
     }
     ?>
+
+
+
     </div>
 
     <div style="clear:both;"></div>
-    <p>Thankyou for ordering with us, we hope to see you again soon</p>
+    <p>Thankyou for ordering with us, your order reference is <?php echo $last_id ?> we hope to see you again soon</p>
     <div class="message_box" style="margin:10px 0px;">
 
     </div>

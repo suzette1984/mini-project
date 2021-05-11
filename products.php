@@ -8,6 +8,8 @@ if ($_SESSION["loggedIn"] != "true") {
 
 }
 
+
+include_once('./dbConfig.php');
 // echo '<pre>';
 // var_dump($_SESSION);
 // echo '<pre>';
@@ -147,6 +149,8 @@ if (isset($_POST['product_id']) && $_POST['product_id'] != "") {
     <?php include 'cart_count.php'; ?>
     <?php
 
+
+
     //display products
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password); //building a new connection object
@@ -171,6 +175,7 @@ if (isset($_POST['product_id']) && $_POST['product_id'] != "") {
                     $product_image = $row2['product_image_filename'];
                     //echo "product image is". $product_image;
                     //exit();  
+
                 } catch (PDOException $e) {
                     echo $sql2 . "<br>" . $e->getMessage(); //If we are not successful we will see an error
                 }
@@ -184,7 +189,12 @@ if (isset($_POST['product_id']) && $_POST['product_id'] != "") {
                         <input type='hidden' name='product_id' value=" . $row['product_id'] . " />
                         <input type='hidden' name='product_image' value=" . $product_image . " />
                         <div class='name'>" . $row['product_name'] . "</div>
-                        <div class='price'>£" . number_format($row['product_price'], 2) . "</div>";
+                        <div class='price'>£" . number_format($row['product_price'], 2)
+                    . " - ";
+                if ($row['featured'] != 0) {
+                    echo '<strong>TODAYS\'S FEATURED PRODUCT</strong>';
+                }
+                echo '</div>';
 
                 echo '<a href="moreinfo.php?product_id=' . $current_product . '" class="button">More Info</a><br>';
 

@@ -37,7 +37,9 @@ if ($_SESSION["loggedIn"] != "true") {
             require_once("./includes/cancelOrderLogic.php");
             echo '</main>';
         } else {
-            include_once("./includes/my-orders.php");
+            echo '<main>';
+            require_once("./includes/my-orders.php");
+            echo '</main>';
         }
         ?>
 

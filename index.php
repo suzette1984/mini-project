@@ -33,7 +33,7 @@ if ($_SESSION["loggedIn"] != "true") {
         <!-- This is the Page Header with related links -->
         <div class="welcomeDiv">
             <header class="page-title">
-                <h1><?php echo $_SESSION["Fname"] ?>, you can place your new order below! </h1>
+                <h1><?php echo $_SESSION["FName"] ?>, you can place your new order below! </h1>
                 <p>From this page you can place a new order.</p>
             </header>
 

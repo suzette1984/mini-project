@@ -134,7 +134,7 @@ try {
 </head>
 
 <body>
-    <?php include_once('./includes/navbar.php') ?>
+
     <div id="content">
 
         <!-- This is the Page Header with related links -->
