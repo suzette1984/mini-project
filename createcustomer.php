@@ -22,7 +22,7 @@ $emailErr;
 $passWeakErr;
 // $passMatchErr;
 
-require_once 'dbconfig.php'; // import the DB login credz
+require_once 'dbConfig.php'; // import the DB login credz
 
 try {
     if ($_SESSION['Role'] == "admin" && $_SERVER['REQUEST_METHOD'] == 'POST') //has the user submitted the form

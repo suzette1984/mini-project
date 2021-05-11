@@ -1,5 +1,5 @@
 <?php
-require_once 'dbconfig.php';
+require_once 'dbConfig.phpp';
 
 // Check connection to DB
 

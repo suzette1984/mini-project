@@ -4,7 +4,7 @@ echo
 <nav>
 <div class="navBrand">
     <a href="./index.php">
-        <h1>🍩 PastelTech</h1>
+        <h1>PastelTech</h1>
     </a>
 </div>
 

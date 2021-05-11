@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['submit'])) {
     // Include the database configuration file
-    include_once 'dbconfig.php';
+    include_once 'dbConfig.php';
     $statusMsg = "";
     //insert product info to product table here
 

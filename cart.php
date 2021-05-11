@@ -6,8 +6,8 @@ if (isset($_POST['action']) && $_POST['action'] == "remove") {
     if (!empty($_SESSION["shopping_cart"])) {
 
         foreach ($_SESSION["shopping_cart"] as $key => $value) {
-            echo "product id is" . $_POST['product_id'] . "</br>";
-            echo "key is" . $key . "</br>";
+            "product id is" . $_POST['product_id'] . "</br>";
+            "key is" . $key . "</br>";
 
             if ($_POST["product_id"] == $key) {
 

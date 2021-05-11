@@ -1,5 +1,5 @@
 <?php
-include('dbconfig.php');
+include('dbConfig.php');
 
 $image_gallery_qty = 0;
 

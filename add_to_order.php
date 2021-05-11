@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "dbconfig.php";
+include "dbConfig.php";
 
 ?>
 <!DOCTYPE html>
@@ -71,7 +71,7 @@ include "dbconfig.php";
     <?php
 
     // Troubleshooting
-    print_r($_SESSION);
+    // print_r($_SESSION);
 
     if (isset($_SESSION["shopping_cart"])) {
         $total_price = 0;

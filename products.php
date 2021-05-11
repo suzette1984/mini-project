@@ -1,7 +1,18 @@
 <?php
-session_start(); //needed so we can read what's in the shopping cart
 
-include('dbconfig.php');
+session_start(); // important function to allow session variables  
+
+if ($_SESSION["loggedIn"] != "true") {
+
+    header("Location: ./login.php"); //send them to the form to login
+
+}
+
+// echo '<pre>';
+// var_dump($_SESSION);
+// echo '<pre>';
+
+
 
 $status = ""; //initiating the variable to use later
 if (isset($_POST['product_id']) && $_POST['product_id'] != "") {

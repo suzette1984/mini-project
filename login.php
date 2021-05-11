@@ -13,7 +13,7 @@ if (empty($_SESSION["loggedIn"])) {
 // init error message placeholder
 $errorMsg;
 
-require_once 'dbconfig.php';
+require_once 'dbConfig.php';
 
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') //has the user submitted the form
@@ -82,7 +82,7 @@ try {
 </head>
 
 <body>
-    <?php include_once('./includes/navbar.php') ?>
+
     <div id="content">
 
         <!-- This is the Page Header with related links -->

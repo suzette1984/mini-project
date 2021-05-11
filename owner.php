@@ -30,7 +30,7 @@ if ($_SESSION["Role"] != "admin") { // If not an admin user
 </head>
 
 <body>
-    <?php include_once('./includes/navbar.php') ?>
+
     <div id="content">
         <!-- This is the Page Header with related links -->
         <div class="welcomeDiv">
@@ -51,7 +51,7 @@ if ($_SESSION["Role"] != "admin") { // If not an admin user
                     <div class="searchByName">
                         <label for="name"> Search by Order Name: </label>
                         <select name="name" id="name" onchange="ordersByName(this.value)">
-                            <?php require_once 'dbconfig.php';
+                            <?php require_once 'dbConfig.php';
 
                             try {
                                 $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password); //building a new connection object
@@ -84,18 +84,14 @@ if ($_SESSION["Role"] != "admin") { // If not an admin user
             <div class="results" id="results">
                 <table>
                     <tr>
-                        <th>ID</th>
-                        <th>Order Name</th>
-                        <th>Sprinkles</th>
-                        <th>Chocolate</th>
-                        <th>Caramel</th>
-                        <th>Raspberry</th>
-                        <th>Strawberry</th>
-                        <th>Blueberry</th>
-                        <th>Cost</th>
-                        <th>Ordered</th>
+                        <th>Order ID</th>
+                        <th>Order Total</th>
+                        <th>Order Date</th>
+                        <th>User ID</th>
+
+
                     </tr>
-                    <?php require_once 'dbconfig.php';
+                    <?php require_once 'dbConfig.php';
 
                     try {
                         $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password); //building a new connection object
@@ -103,23 +99,18 @@ if ($_SESSION["Role"] != "admin") { // If not an admin user
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                         //Selecting multiple rows from a MySQL database using the PDO::query function.
-                        $sql = "SELECT ID, customer_name, doughnut_sprinkles, doughnut_chocolate, doughnut_caramel, doughnut_raspberry, doughnut_strawberry, doughnut_blueberry, order_date, order_total
+                        $sql = "SELECT order_id, order_total, order_date, user_id
                     FROM orders";
 
                         //For each result that we return, loop through the result and perform the echo statements.
                         //$row is an array with the fields for each record returned from the SELECT
                         foreach ($conn->query($sql, PDO::FETCH_ASSOC) as $row) {
                             echo "<tr>";
-                            echo "<td class='idCol'>" . $row['ID'] . "</td>";
-                            echo "<td>" . $row['customer_name'] . "</td>";
-                            echo "<td>" . $row['doughnut_sprinkles'] . "</td>";
-                            echo "<td>" . $row['doughnut_chocolate'] . "</td>";
-                            echo "<td>" . $row['doughnut_caramel'] . "</td>";
-                            echo "<td>" . $row['doughnut_raspberry'] . "</td>";
-                            echo "<td>" . $row['doughnut_strawberry'] . "</td>";
-                            echo "<td>" . $row['doughnut_blueberry'] . "</td>";
+
+                            echo "<td>" . $row['order_id'] . "</td>";
                             echo "<td> £" . number_format($row['order_total'], 2) . "</td>";
                             echo "<td>" . $row['order_date'] . "</td>";
+                            echo "<td>" . $row['user_id'] . "</td>";
                             echo "</tr>";
                         }
                     } catch (PDOException $e) {
