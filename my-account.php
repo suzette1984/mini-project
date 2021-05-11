@@ -24,15 +24,15 @@ if ($_SESSION["loggedIn"] != "true") {
 </head>
 
 <body>
-    <?php include_once('./includes/navbar.php') ?>
+
     <div id="content">
 
         <?php
-        if (isset($_GET["OrderID"]) && $_GET["Intent"] === "edit") {
+        if (isset($_GET["order_id"]) && $_GET["Intent"] === "edit") {
             echo '<main>';
-            require_once("./includes/editOrderLogic.php");
+            require_once("./add_to_order.php");
             echo '</main>';
-        } elseif (isset($_GET["OrderID"]) && $_GET["Intent"] === "cancel") {
+        } elseif (isset($_GET["order_id"]) && $_GET["Intent"] === "cancel") {
             echo '<main>';
             require_once("./includes/cancelOrderLogic.php");
             echo '</main>';

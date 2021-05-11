@@ -27,14 +27,14 @@ if ($_SESSION["loggedIn"] != "true") {
 </head>
 
 <body>
-    <?php include_once('./includes/navbar.php') ?>
+
     <div id="content">
 
         <!-- This is the Page Header with related links -->
         <div class="welcomeDiv">
             <header class="page-title">
-                <h1><?php echo $_SESSION["FName"] ?>, you can place your new order below! </h1>
-                <p>From this page you can place a new doughnut order.</p>
+                <h1><?php echo $_SESSION["Fname"] ?>, you can place your new order below! </h1>
+                <p>From this page you can place a new order.</p>
             </header>
 
             <div class="pageOptions flex">
@@ -46,9 +46,9 @@ if ($_SESSION["loggedIn"] != "true") {
             There are errors with your order!
         </div>
 
-        <?php include_once("./includes/orderForm.php"); ?>
+        <?php include_once("./products.php"); ?>
     </div>
     <script src="js/app.js"></script>
 </body>
 
-</html>
+</html
